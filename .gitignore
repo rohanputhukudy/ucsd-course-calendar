@@ -1,3 +1,7 @@
+# Webreg website files
+webregMain.html
+webregMain_files/
+
 # Byte-compiled / optimized / DLL files
 __pycache__/
 *.py[cod]
