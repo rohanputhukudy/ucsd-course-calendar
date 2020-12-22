@@ -19,7 +19,7 @@ while int(rows[i]['id']) == i:
 table = rows[:i]
 
 # Populates array of courses where each course consists of 3 row vectors
-courses = []
+courses_array = []
 curr_course = []
 for row in table:
 
@@ -34,12 +34,38 @@ for row in table:
 
     # When reached the last row corresponding to the current course, adds course to list of courses
     if course_row[0] == 'Final Exam':
-        courses.append(curr_course)
+        courses_array.append(curr_course)
         curr_course = []
 
-for c in courses:
+for c in courses_array:
     print(c[0][0])
     for row in c:
         print(row)
 
 # Converts 3D course array into an array of course dicts with relevant calendar info
+courses = []
+for c in courses_array:
+    course = {
+        'name': '',
+        'lecture': {},
+        'discussion': {},
+        'final': {},
+    }
+    for row in c:
+        # Row corresponds to discussion info
+        if row[1] = 'DI':
+            course['dicussion']['day'] = row[2]
+            course['dicussion']['time'] = row[3]
+
+        # Row corresponds to final info
+        elif row[0] == 'Final Exam':
+            course['final']['date'] = row[2]
+            course['final']['time'] = row[3]
+
+        # Row corresponds to lecture info
+        else:
+            course['name'] = row[0]
+            course['lecture']['day'] = row[7]
+            course['lecture']['time'] = row[8]
+
+    courses.append(course)
